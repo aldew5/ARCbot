@@ -37,6 +37,7 @@ void autonomous(void) {
 }
 
 void usercontrol(void) {
+
   // User control code here, inside the loop
   while (true) {
 
@@ -46,7 +47,15 @@ void usercontrol(void) {
     r1.spin(directionType::rev, Controller1.Axis2.value(), percentUnits::pct);
     r2.spin(directionType::fwd, Controller1.Axis2.value(), percentUnits::pct);
 
-
+    // turning 
+    if (Controller1.ButtonL1.pressing()){
+      l1.spin(directionType::fwd, 50, percentUnits::pct);
+      l2.spin(directionType::rev, 50, percentUnits::pct);
+    }
+    else if (Controller1.ButtonR1.pressing()){
+      r1.spin(directionType::rev, 50, percentUnits::pct);
+      r2.spin(directionType::fwd, 50, percentUnits::pct);
+    }
     wait(20, msec); 
   }
 }
